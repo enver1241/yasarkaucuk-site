@@ -9,17 +9,18 @@
 :root{
   --brand:#0f2ea6;
   --brand2:#1f4ed8;
-  --dark:#0b1220;
   --text:#ffffff;
-  --muted:rgba(255,255,255,.75);
+  --muted:rgba(255,255,255,.78);
 }
 *{box-sizing:border-box}
+html,body{height:100%}
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  overflow-x:hidden; /* mobilde yatay kaymayı keser */
 }
 
-/* HERO / SLIDE */
+/* HERO */
 .hero{
   min-height:100vh;
   display:flex;
@@ -28,56 +29,63 @@ body{
     linear-gradient(120deg, rgba(15,46,166,.85), rgba(0,0,0,.65)),
     url("hero-bg.jpg") center/cover no-repeat;
   color:var(--text);
-  padding:60px;
+  padding: clamp(20px, 5vw, 60px);
+  position:relative;
 }
 
+/* İç kapsayıcı: taşmayı engeller */
 .hero-inner{
   max-width:1200px;
-  width:100%;
+  width:min(1200px, 100%);
   margin:auto;
   display:grid;
   grid-template-columns: 1.2fr 1fr;
-  gap:60px;
+  gap: clamp(20px, 4vw, 60px);
   align-items:center;
 }
 
-/* SOL ALAN */
+/* SOL */
 .hero-left h1{
-  font-size:52px;
-  line-height:1.1;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height:1.08;
   margin:0 0 14px 0;
   font-weight:800;
+  letter-spacing:.2px;
 }
-.hero-left h1 span{
-  color:#c7d2fe;
-}
+.hero-left h1 span{color:#c7d2fe}
 .hero-left p{
-  font-size:18px;
-  line-height:1.6;
-  max-width:560px;
+  font-size: clamp(15px, 2vw, 18px);
+  line-height:1.65;
+  max-width: 56ch;
   color:var(--muted);
+  margin:0;
 }
 
+/* BUTONLAR */
 .buttons{
-  margin-top:32px;
+  margin-top:24px;
   display:flex;
-  gap:18px;
+  gap:12px;
   flex-wrap:wrap;
 }
 .btn{
-  padding:16px 30px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px 24px;
   border-radius:999px;
   font-size:15px;
-  font-weight:700;
+  font-weight:800;
   text-decoration:none;
   transition:.25s;
+  min-width: 220px; /* mobilde butonlar eşit dursun */
 }
 .btn-primary{
   background:#fff;
   color:#0f2ea6;
 }
 .btn-primary:hover{
-  transform:translateY(-3px);
+  transform:translateY(-2px);
   box-shadow:0 14px 30px rgba(0,0,0,.35);
 }
 .btn-outline{
@@ -89,51 +97,82 @@ body{
   color:#0f2ea6;
 }
 
-/* SAĞ ALAN – KARTLAR */
+/* SAĞ KARTLAR */
 .hero-right{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:20px;
+  gap:14px;
 }
 .info{
   background:rgba(255,255,255,.12);
   backdrop-filter: blur(8px);
   border-radius:18px;
-  padding:22px;
+  padding:18px;
+  min-width: 0; /* taşmayı engeller */
 }
 .info h3{
   margin:0 0 6px 0;
-  font-size:16px;
+  font-size:15px;
 }
 .info p{
   margin:0;
-  font-size:14px;
+  font-size:13px;
   color:var(--muted);
-  line-height:1.5;
+  line-height:1.55;
+  word-break: break-word; /* uzun mail/telefon taşmasın */
 }
 
-/* FOOTER BAR */
+/* FOOTER */
 .footer-bar{
   position:absolute;
-  bottom:20px;
+  bottom:18px;
   left:0;
   right:0;
+  padding: 0 16px;
   text-align:center;
-  font-size:13px;
+  font-size:12px;
   color:rgba(255,255,255,.7);
 }
 
-/* RESPONSIVE */
-@media(max-width:900px){
+/* ====== RESPONSIVE ====== */
+
+/* Tablet ve altı */
+@media (max-width: 900px){
   .hero-inner{
-    grid-template-columns:1fr;
-    gap:40px;
+    grid-template-columns: 1fr;
+    align-items: start;
   }
-  .hero-left h1{font-size:40px}
+  .hero-right{
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-bar{
+    position:static;
+    margin-top:20px;
+  }
 }
-@media(max-width:600px){
-  .hero{padding:30px}
-  .hero-left h1{font-size:34px}
+
+/* Mobil */
+@media (max-width: 600px){
+  .hero{
+    padding: 22px;
+    align-items: flex-start;
+  }
+
+  .buttons{
+    gap:10px;
+  }
+  .btn{
+    width:100%;
+    min-width: 0;
+  }
+
+  .hero-right{
+    grid-template-columns: 1fr; /* kartlar tek kolon */
+  }
+
+  .info{
+    padding:16px;
+  }
 }
 </style>
 </head>
@@ -141,14 +180,10 @@ body{
 <body>
 
 <section class="hero">
-
   <div class="hero-inner">
 
-    <!-- SOL: MARKA -->
     <div class="hero-left">
-      <h1>
-        Yaşar <span>Kauçuk</span>
-      </h1>
+      <h1>Yaşar <span>Kauçuk</span></h1>
       <p>
         Kauçuk, hortum, kelepçe ve bağlantı ekipmanlarında
         <strong>güvenilir tedarikçi</strong>.
@@ -157,12 +192,13 @@ body{
       </p>
 
       <div class="buttons">
+        <!-- Katalog sayfanın adı neyse onu yaz:
+             Öneri: katalog.html  (login.html ise login.html kalsın) -->
         <a href="login.html" class="btn btn-primary">Ürün Kataloğuna Git</a>
         <a href="iletisim.html" class="btn btn-outline">İletişim</a>
       </div>
     </div>
 
-    <!-- SAĞ: BİLGİ KUTULARI -->
     <div class="hero-right">
       <div class="info">
         <h3>🏭 Geniş Ürün Yelpazesi</h3>
@@ -188,10 +224,7 @@ body{
 
   </div>
 
-  <div class="footer-bar">
-    © 2026 Yaşar Kauçuk • Tüm Hakları Saklıdır
-  </div>
-
+  <div class="footer-bar">© 2026 Yaşar Kauçuk • Tüm Hakları Saklıdır</div>
 </section>
 
 </body>
