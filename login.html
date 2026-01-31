@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yaşar Kauçuk | Ürün Kataloğu</title>
+
+<style>
+:root{
+  --brand:#0f2ea6;
+  --brand2:#1f4ed8;
+  --dark:#0b1220;
+  --text:#ffffff;
+  --muted:rgba(255,255,255,.75);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+/* HERO / SLIDE */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  background:
+    linear-gradient(120deg, rgba(15,46,166,.85), rgba(0,0,0,.65)),
+    url("hero-bg.jpg") center/cover no-repeat;
+  color:var(--text);
+  padding:60px;
+}
+
+.hero-inner{
+  max-width:1200px;
+  width:100%;
+  margin:auto;
+  display:grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+/* SOL ALAN */
+.hero-left h1{
+  font-size:52px;
+  line-height:1.1;
+  margin:0 0 14px 0;
+  font-weight:800;
+}
+.hero-left h1 span{
+  color:#c7d2fe;
+}
+.hero-left p{
+  font-size:18px;
+  line-height:1.6;
+  max-width:560px;
+  color:var(--muted);
+}
+
+.buttons{
+  margin-top:32px;
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.btn{
+  padding:16px 30px;
+  border-radius:999px;
+  font-size:15px;
+  font-weight:700;
+  text-decoration:none;
+  transition:.25s;
+}
+.btn-primary{
+  background:#fff;
+  color:#0f2ea6;
+}
+.btn-primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(0,0,0,.35);
+}
+.btn-outline{
+  border:2px solid #fff;
+  color:#fff;
+}
+.btn-outline:hover{
+  background:#fff;
+  color:#0f2ea6;
+}
+
+/* SAĞ ALAN – KARTLAR */
+.hero-right{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+.info{
+  background:rgba(255,255,255,.12);
+  backdrop-filter: blur(8px);
+  border-radius:18px;
+  padding:22px;
+}
+.info h3{
+  margin:0 0 6px 0;
+  font-size:16px;
+}
+.info p{
+  margin:0;
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.5;
+}
+
+/* FOOTER BAR */
+.footer-bar{
+  position:absolute;
+  bottom:20px;
+  left:0;
+  right:0;
+  text-align:center;
+  font-size:13px;
+  color:rgba(255,255,255,.7);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  .hero-left h1{font-size:40px}
+}
+@media(max-width:600px){
+  .hero{padding:30px}
+  .hero-left h1{font-size:34px}
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+  <div class="hero-inner">
+
+    <!-- SOL: MARKA -->
+    <div class="hero-left">
+      <h1>
+        Yaşar <span>Kauçuk</span>
+      </h1>
+      <p>
+        Kauçuk, hortum, kelepçe ve bağlantı ekipmanlarında
+        <strong>güvenilir tedarikçi</strong>.
+        Tüm ürünlerimizi modern katalog sistemimizden
+        hızlıca inceleyin.
+      </p>
+
+      <div class="buttons">
+        <a href="index.html" class="btn btn-primary">Ürün Kataloğuna Git</a>
+        <a href="iletisim.html" class="btn btn-outline">İletişim</a>
+      </div>
+    </div>
+
+    <!-- SAĞ: BİLGİ KUTULARI -->
+    <div class="hero-right">
+      <div class="info">
+        <h3>🏭 Geniş Ürün Yelpazesi</h3>
+        <p>Hortumlar, kelepçeler, kauçuk ürünler ve bağlantı elemanları.</p>
+      </div>
+      <div class="info">
+        <h3>⚙️ Endüstriyel Çözümler</h3>
+        <p>Sanayi, otomotiv ve altyapı projeleri için uygun ürünler.</p>
+      </div>
+      <div class="info">
+        <h3>🚚 Hızlı Tedarik</h3>
+        <p>Stoktan hızlı teslimat ve güvenilir sevkiyat.</p>
+      </div>
+      <div class="info" id="iletisim">
+        <h3>📞 İletişim</h3>
+        <p>
+          +90 530 648 75 63<br>
+          yasarkaucuk@outlook.com<br>
+          Türkiye
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bar">
+    © 2026 Yaşar Kauçuk • Tüm Hakları Saklıdır
+  </div>
+
+</section>
+
+</body>
+</html>

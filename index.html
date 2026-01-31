@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ürünler | Katalog</title>
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --panel:#f9fafb;
+      --brand:#1f4ed8;
+      --brand2:#0f2ea6;
+      --shadow: 0 10px 25px rgba(0,0,0,.06);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    /* Header */
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      background:#fff;
+      border-bottom:1px solid var(--border);
+    }
+    .topbar-inner{
+      max-width:1200px;
+      margin:0 auto;
+      padding:14px 16px;
+      display:flex;
+      gap:14px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .brand{
+      display:flex; gap:10px; align-items:center;
+      min-width: 220px;
+    }
+    .logo{
+      width:40px; height:40px; border-radius:12px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: var(--shadow);
+    }
+    .brand h1{
+      font-size:16px; margin:0; line-height:1.1;
+    }
+    .brand small{
+      display:block;
+      color:var(--muted);
+      margin-top:2px;
+      font-size:12px;
+    }
+    .search{
+      flex:1;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      max-width:640px;
+    }
+    .search input{
+      width:100%;
+      padding:11px 12px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      outline:none;
+      font-size:14px;
+      background:var(--panel);
+    }
+    .search input:focus{
+      border-color: rgba(31,78,216,.35);
+      box-shadow: 0 0 0 4px rgba(31,78,216,.12);
+      background:#fff;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--muted);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    /* Layout */
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:16px;
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:16px;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background:#fff;
+      box-shadow: var(--shadow);
+      height: calc(100vh - 92px);
+      position: sticky;
+      top: 76px;
+    }
+    .side-head{
+      padding:14px 14px 12px 14px;
+      border-bottom:1px solid var(--border);
+      background:var(--panel);
+    }
+    .side-head b{font-size:14px}
+    .side-head div{color:var(--muted); font-size:12px; margin-top:4px}
+    .menu{
+      padding:10px;
+      overflow:auto;
+      height: calc(100% - 58px);
+    }
+    .cat{
+      border:1px solid var(--border);
+      border-radius:14px;
+      margin-bottom:10px;
+      overflow:hidden;
+    }
+    .cat button{
+      width:100%;
+      text-align:left;
+      padding:10px 12px;
+      border:0;
+      background:#fff;
+      cursor:pointer;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-weight:600;
+      font-size:14px;
+    }
+    .cat button:hover{background: #f8fafc}
+    .cat .subs{
+      border-top:1px solid var(--border);
+      display:none;
+      padding:8px;
+      background:#fff;
+    }
+    .cat.open .subs{display:block}
+    .sub{
+      width:100%;
+      text-align:left;
+      border:1px solid var(--border);
+      background: #fff;
+      border-radius:12px;
+      padding:9px 10px;
+      margin:6px 0;
+      cursor:pointer;
+      font-size:13px;
+      color:#111827;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+    }
+    .sub:hover{background:#f9fafb}
+    .sub.active{
+      border-color: rgba(31,78,216,.35);
+      box-shadow: 0 0 0 4px rgba(31,78,216,.10);
+    }
+    .count{
+      color:var(--muted);
+      font-size:12px;
+      padding:2px 8px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:var(--panel);
+      flex:0 0 auto;
+    }
+
+    /* Content */
+    .content{
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background:#fff;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      min-height: calc(100vh - 92px);
+    }
+    .content-head{
+      padding:14px 16px;
+      border-bottom:1px solid var(--border);
+      background: #fff;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .titleblock h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .titleblock p{
+      margin:6px 0 0 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .toolbar{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .btn{
+      border:1px solid var(--border);
+      background:var(--panel);
+      padding:10px 12px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:13px;
+    }
+    .btn:hover{background:#fff}
+    .grid{
+      padding:16px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:14px;
+    }
+    .card{
+      border:1px solid var(--border);
+      border-radius: 18px;
+      overflow:hidden;
+      background:#fff;
+      display:flex;
+      flex-direction:column;
+      box-shadow: 0 10px 24px rgba(0,0,0,.04);
+    }
+    .thumb{
+      height:150px;
+      background: linear-gradient(135deg, #f3f4f6, #ffffff);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--muted);
+      font-size:12px;
+      border-bottom:1px solid var(--border);
+      position:relative;
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .card .body{
+      padding:12px 12px 14px 12px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .card .name{
+      font-weight:700;
+      font-size:14px;
+      line-height:1.25;
+    }
+    .card .meta{
+      color:var(--muted);
+      font-size:12px;
+    }
+    .card .actions{
+      margin-top:auto;
+      display:flex;
+      gap:10px;
+    }
+    .go{
+      flex:1;
+      border:1px solid var(--border);
+      background: #fff;
+      padding:10px 12px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:13px;
+      font-weight:600;
+    }
+    .go:hover{
+      border-color: rgba(31,78,216,.35);
+    }
+
+    /* Modal */
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.35);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+      z-index:50;
+    }
+    .modal-backdrop.show{display:flex}
+    .modal{
+      width:min(720px, 100%);
+      background:#fff;
+      border-radius:20px;
+      border:1px solid var(--border);
+      box-shadow: 0 25px 60px rgba(0,0,0,.25);
+      overflow:hidden;
+    }
+    .modal-head{
+      padding:14px 16px;
+      border-bottom:1px solid var(--border);
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      background:var(--panel);
+    }
+    .modal-head b{font-size:14px}
+    .modal-head button{
+      border:1px solid var(--border);
+      background:#fff;
+      padding:8px 10px;
+      border-radius:12px;
+      cursor:pointer;
+    }
+    .modal-body{
+      padding:16px;
+      display:grid;
+      grid-template-columns: 220px 1fr;
+      gap:16px;
+    }
+    .modal-thumb{
+      height:180px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background: linear-gradient(135deg, #f3f4f6, #ffffff);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--muted);
+      font-size:12px;
+      overflow:hidden;
+    }
+    .modal-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .kv{
+      display:grid;
+      gap:8px;
+      font-size:13px;
+    }
+    .kv div{
+      padding:10px 12px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:#fff;
+    }
+    .kv b{display:block; font-size:12px; color:var(--muted); margin-bottom:4px; font-weight:600}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .wrap{grid-template-columns: 1fr}
+      .sidebar{position:relative; top:auto; height:auto}
+      .content{min-height:auto}
+      .grid{grid-template-columns: repeat(2, minmax(0, 1fr))}
+    }
+    @media (max-width: 560px){
+      .topbar-inner{gap:10px}
+      .brand{min-width:auto}
+      .pill{display:none}
+      .grid{grid-template-columns: 1fr}
+      .modal-body{grid-template-columns: 1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand" role="banner">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Ürün Kataloğu</h1>
+          <small>Minimal • Tek sayfa • Hızlı erişim</small>
+        </div>
+      </div>
+
+      <div class="search" role="search">
+        <input id="searchInput" type="search" placeholder="Ürün ara (örn: kelepçe, vana, hortum, oring)..." />
+      </div>
+
+      <div class="pill" id="activePath">Seçim: —</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <aside class="sidebar">
+      <div class="side-head">
+        <b>Ürünler</b>
+        <div>Soldan seç → sağda içerik değişir</div>
+      </div>
+      <div class="menu" id="menu"></div>
+    </aside>
+
+    <section class="content">
+      <div class="content-head">
+        <div class="titleblock">
+          <h2 id="contentTitle">Tüm Ürünler</h2>
+          <p id="contentDesc">Soldan kategori seçebilir veya üstten arayabilirsiniz.</p>
+        </div>
+        <div class="toolbar">
+          <button class="btn" id="showAllBtn">Tümünü Göster</button>
+        </div>
+      </div>
+
+      <div class="grid" id="grid"></div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Ürün Detayı">
+      <div class="modal-head">
+        <b id="modalTitle">Ürün</b>
+        <button id="modalClose" aria-label="Kapat">Kapat</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-thumb" id="modalThumb">Görsel (opsiyonel)</div>
+        <div class="kv" id="modalKv"></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // ========= 1) VERİ =========
+  // Her ürün: { name:"...", img:"images/....jpg" }  (img yoksa "" bırakabilirsin)
+
+  const CATALOG = [
+    {
+      category: "Kayışlar",
+      subs: [
+        { sub: "Zaman kayışları", items: [
+          { name: "Zaman kayışları", img: "zaman-kayislari.jpg" }
+        ]},
+        { sub: "V kayışlar", items: [
+          { name: "V kayışlar", img: "v-kayislar.jpg" }
+        ]},
+        { sub: "Fitiller", items: [
+          { name: "Fitiller", img: "fitiller.jpg" }
+        ]},
+      ]
+    },
+    {
+      category: "Cam fitilleri",
+      subs: [
+        { sub: "Eva yapışkanlı fitiller", items: [
+          { name: "Eva yapışkanlı fitiller", img: "eva-yapiskanli-fitiller.jpg" }
+        ]},
+        { sub: "İzolasyon fitilleri", items: [
+          { name: "İzolasyon fitilleri", img: "izolasyon-fitilleri.jpg" }
+        ]},
+      ]
+    },
+    {
+      category: "Bantlar",
+      subs: [
+        { sub: "Bantlar", items: [
+          { name: "Bantlar", img: "bantlar.jpg" }
+        ]}
+      ]
+    },
+    {
+      category: "Kauçuk",
+      subs: [
+        { sub: "Sünger profiller", items: [{ name:"Sünger profiller", img:"sunger-profiller.jpg" }] },
+        { sub: "Levhalar", items: [{ name:"Levhalar", img:"levhalar.jpg" }] },
+        { sub: "Paspaslar", items: [{ name:"Paspaslar", img:"paspaslar.jpg" }] },
+        { sub: "Kapak", items: [{ name:"Kapak", img:"kapak.jpg" }] },
+        { sub: "Oring", items: [{ name:"Oring", img:"oring.jpg" }] },
+        { sub: "Körükler", items: [{ name:"Körükler", img:"korukler.jpg" }] },
+        { sub: "Tapalar", items: [{ name:"Tapalar", img:"tapa.jpg" }] },
+        { sub: "Tekne kauçuk", items: [{ name:"Tekne kauçuk", img:"tekne-kaucuk.jpg" }] },
+      ]
+    },
+    {
+      category: "Kelepçeler",
+      subs: [
+        { sub: "Takviyeli kelepçeler", items: [{ name:"Takviyeli kelepçeler", img:"takviyeli-kelepce.jpg" }] },
+        { sub: "Mini kelepçeler", items: [{ name:"Mini kelepçeler", img:"mini-kelepce.jpg" }] },
+        { sub: "Ağır hizmet kelepçe", items: [{ name:"Ağır hizmet kelepçe", img:"agir-hizmet-kelepce.jpg" }] },
+        { sub: "Boru sekmanları", items: [{ name:"Boru sekmanları", img:"boru-sekman.jpg" }] },
+        { sub: "Doğalgaz kelepçe", items: [{ name:"Doğalgaz kelepçe", img:"dogalgaz-kelepce.jpg" }] },
+        { sub: "Ezmeli paslanmaz kelepçe", items: [{ name:"Ezmeli paslanmaz kelepçe", img:"ezmeli-paslanmaz.jpg" }] },
+        { sub: "Paslanmaz kelepçe", items: [{ name:"Paslanmaz kelepçe", img:"paslanmaz-kelepce.jpg" }] },
+        { sub: "Tel kelepçe", items: [{ name:"Tel kelepçe", img:"tel-kelepce.jpg" }] },
+        { sub: "Yaylı kelepçe", items: [{ name:"Yaylı kelepçe", img:"yayli-kelepce.jpg" }] },
+        { sub: "Sonsuz kelepçe", items: [{ name:"Sonsuz kelepçe", img:"sonsuz-kelepce.jpg" }] },
+        { sub: "Sonsuz kelepçe aparat", items: [{ name:"Sonsuz kelepçe aparat", img:"sonsuz-aparat.jpg" }] },
+        { sub: "Kompresör kelepçe", items: [{ name:"Kompresör kelepçe", img:"kompresor-kelepce.jpg" }] },
+      ]
+    },
+    {
+      category: "Fittings",
+      subs: [
+        { sub: "Çekvalf", items: [
+          { name:"Çekvalf", img:"cekvalf.jpg" },
+          { name:"Çalparalı çekvalf", img:"calparali-cekvalf.jpg" },
+          { name:"Yaylı dik çekvalf", img:"yayli-dik-cekvalf.jpg" },
+        ]},
+        { sub: "Pislik tutucu", items: [
+          { name:"Pislik tutucu", img:"pislik-tutucu.jpg" }
+        ]},
+        { sub: "Vanalar", items: [
+          { name:"Vanalar", img:"vana.jpg" },
+          { name:"Küresel vana", img:"kuresel-vana.jpg" },
+          { name:"Mini vana", img:"mini-vana.jpg" },
+          { name:"Musluk vana", img:"musluk-vana.jpg" },
+          { name:"Klape", img:"klape.jpg" },
+        ]},
+        { sub: "Rekor", items: [
+          { name:"Rekor", img:"rekor.jpg" },
+          { name:"Anahtar ağızlı rekor", img:"anahtar-agizli-rekor.jpg" },
+          { name:"Direk geçiş rekorlar", img:"direk-gecis-rekor.jpg" },
+          { name:"Alman tipi rekor", img:"alman-tipi-rekor.jpg" },
+          { name:"Sarı rekor", img:"sari-rekor.jpg" },
+        ]},
+        { sub: "Kamlok", items: [
+          { name:"Kamlok", img:"kamlok.jpg" },
+          { name:"Paslanmaz Kamlok", img:"paslanmaz-kamlok.jpg" },
+          { name:"Alüminyum Kamlok", img:"aluminyum-kamlok.jpg" },
+        ]},
+      ]
+    },
+    {
+      category: "Takozlar",
+      subs: [
+        { sub: "Takoz çeşitleri", items: [
+          { name:"A tip takoz", img:"a-tip-takoz.jpg" },
+          { name:"B tip takoz", img:"b-tip-takoz.jpg" },
+          { name:"C tip takoz", img:"c-tip-takoz.jpg" },
+          { name:"D tip takoz", img:"d-tip-takoz.jpg" },
+          { name:"Egzoz askı lastikleri", img:"egzoz-aski.jpg" },
+          { name:"Motor takozları", img:"motor-takoz.jpg" },
+          { name:"Pedal lastikleri", img:"pedal-lastik.jpg" },
+          { name:"Vakum takoz lastikler", img:"vakum-takoz.jpg" },
+          { name:"Dayama takozları", img:"dayama-takoz.jpg" },
+          { name:"Kare özel takozlar", img:"kare-blok.jpg" },
+          { name:"Lift takozu", img:"lift-takoz.jpg" },
+          { name:"Silindir takozu", img:"silindir-takoz.jpg" }
+        ]},
+      ]
+    },
+    {
+      category: "Hortumlar",
+      subs: [
+        { sub: "Hortum çeşitleri", items: [
+          { name:"Şeffaf bakır telli hava hortumu", img:"seffaf-bakir-telli.jpg" },
+          { name:"AFS hava hortum", img:"afs-hava.jpg" },
+          { name:"Burflex hortum", img:"burflex.jpg" },
+          { name:"Kompresör hava hortum", img:"kompresor-hava.jpg" },
+          { name:"Metrelik hortum", img:"metrelik-hortum.jpg" },
+          { name:"Alçak basınçlı su", img:"alcak-basincli-su.jpg" },
+          { name:"Bahçe hortumları", img:"bahce-hortumu.jpg" },
+          { name:"Çelik telli şeffaf hortum tip A", img:"celik-telli-seffaf.jpg" },
+          { name:"Çiftli termo hava hortumu", img:"ciftli-termo.jpg" },
+          { name:"Gri toz emiş hortumu", img:"gri-toz-emis.jpg" },
+          { name:"Hafif hizmet su alıcı ve verici", img:"hafif-hizmet.jpg" },
+          { name:"İtfaiye hortumu", img:"itfaiye.jpg" },
+          { name:"Kalorifer hortum", img:"kalorifer.jpg" },
+          { name:"Kraft kahverengi hortum", img:"kraft.jpg" },
+          { name:"Lavabo sifon", img:"lavabo-opak.jpg" },
+          { name:"Lavabo sifon şeffaf", img:"lavabo-seffaf.jpg" },
+          { name:"LPG tüpgaz", img:"lpg.jpg" },
+          { name:"Muhtelif hortum", img:"muhtelif.jpg" },
+          { name:"New garden su hortumu", img:"new-garden.jpg" },
+          { name:"Orta hizmet su alıcı ve verici", img:"orta-hizmet.jpg" },
+          { name:"Otomotiv hortum", img:"otomotiv.jpg" },
+          { name:"PVC Apex (Silikonlu örgülü)", img:"pvc-apex.jpg" },
+          { name:"PVC saf su hortum", img:"pvc-saf-su.jpg" },
+          { name:"PVC silikonlu naturel su hortumu", img:"pvc-silikonlu.jpg" },
+          { name:"Süper mavi PVC şeffaf örgülü", img:"super-mavi.jpg" },
+          { name:"Süper orjinal su hortumu", img:"super-orjinal.jpg" },
+          { name:"Terazi hortumu", img:"terazi.jpg" },
+          { name:"Termo hava hortumu", img:"termo-hava.jpg" },
+          { name:"Termo kompresör su hortumu 20 bar", img:"termo-kompresor-20bar.jpg" },
+          { name:"Termoline alçak basınçlı su", img:"termoline.jpg" },
+          { name:"Vidanjör hortumu", img:"vidanjor.jpg" },
+          { name:"Yakıt hortum", img:"yakit.jpg" },
+          { name:"Radyatör hortum", img:"radyator.jpg" },
+          { name:"Dirsek PVC", img:"dirsek-pvc.jpg" },
+          { name:"Hortum rekoru pvc", img:"hortum-rekor.jpg" },
+          { name:"Kaplin", img:"kaplin.jpg" },
+          { name:"PVC depo rekor", img:"pvc-depo-rekor.jpg" },
+          { name:"PVC hortum eki", img:"pvc-hortum-eki.jpg" },
+          { name:"PVC küresel vana", img:"pvc-kuresel-vana.jpg" },
+          { name:"PVC manşon", img:"pvc-manson.jpg" },
+          { name:"PVC nipel", img:"pvc-nipel.jpg" },
+          { name:"PVC rediksiyon", img:"pvc-rediksiyon.jpg" },
+          { name:"PVC tapa", img:"pvc-tapa.jpg" },
+          { name:"PVC te", img:"pvc-te.jpg" },
+          { name:"Damlama vanası", img:"damlama-vanasi.jpg" },
+          { name:"Hortum bağlantı aparatı", img:"baglanti-aparati.jpg" },
+          { name:"Hortum ek sıktırmalı", img:"ek-siktirmali.jpg" },
+          { name:"Hortum jak eklem", img:"jak-eklem.jpg" },
+          { name:"Hortum lansı", img:"lans.jpg" },
+          { name:"Klima çatalı", img:"klima-catali.jpg" },
+          { name:"Musluk adaptör", img:"musluk-adaptor.jpg" },
+          { name:"Musluk çeşme adaptör", img:"musluk-cesme-adaptor.jpg" },
+          { name:"PVC bidon musluğu", img:"pvc-bidon-musluk.jpg" },
+          { name:"Sıktırmalı Hortum", img:"siktirmali-hortum.jpg" },
+          { name:"Su lansı", img:"su-lansi.jpg" },
+        ]},
+      ]
+    },
+  ];
+
+  // ========= 2) DURUM =========
+  const state = {
+    activeCategory: null,
+    activeSub: null,
+    search: "",
+  };
+
+  // ========= 3) HELPERS =========
+  const $ = (id) => document.getElementById(id);
+
+  function flattenAllItems(){
+    const out = [];
+    for(const c of CATALOG){
+      for(const s of c.subs){
+        for(const item of s.items){
+          out.push({
+            category: c.category,
+            sub: s.sub,
+            name: item.name,
+            img: item.img || ""
+          });
+        }
+      }
+    }
+    return out;
+  }
+
+  function currentPathText(){
+    if(state.activeCategory && state.activeSub) return `${state.activeCategory} → ${state.activeSub}`;
+    if(state.activeCategory) return `${state.activeCategory}`;
+    return "—";
+  }
+
+  function setTitle(){
+    const title = $("contentTitle");
+    const desc  = $("contentDesc");
+    const path = currentPathText();
+
+    if(state.search.trim()){
+      title.textContent = `Arama: "${state.search.trim()}"`;
+      desc.textContent = `Eşleşen ürünler listeleniyor.`;
+    } else if(state.activeCategory && state.activeSub){
+      title.textContent = state.activeSub;
+      desc.textContent  = `${state.activeCategory} kategorisindeki ürünler.`;
+    } else if(state.activeCategory){
+      title.textContent = state.activeCategory;
+      desc.textContent  = `Bu kategorideki tüm ürünler.`;
+    } else {
+      title.textContent = "Tüm Ürünler";
+      desc.textContent  = `Soldan kategori seçebilir veya üstten arayabilirsiniz.`;
+    }
+
+    $("activePath").textContent = `Seçim: ${path}`;
+  }
+
+  // ========= 4) MENU RENDER =========
+  function renderMenu(){
+    const menu = $("menu");
+    menu.innerHTML = "";
+
+    CATALOG.forEach((catObj) => {
+      const cat = document.createElement("div");
+      cat.className = "cat";
+      if(state.activeCategory === catObj.category) cat.classList.add("open");
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.innerHTML = `<span>${catObj.category}</span><span style="color:var(--muted);font-weight:600">▾</span>`;
+      btn.addEventListener("click", () => {
+        const isSame = state.activeCategory === catObj.category;
+        state.activeCategory = isSame ? null : catObj.category;
+        state.activeSub = null;
+        state.search = "";
+        $("searchInput").value = "";
+        renderMenu();
+        renderGrid();
+      });
+
+      const subs = document.createElement("div");
+      subs.className = "subs";
+
+      catObj.subs.forEach(subObj => {
+        const total = subObj.items.length;
+        const sbtn = document.createElement("button");
+        sbtn.type = "button";
+        sbtn.className = "sub";
+        if(state.activeCategory === catObj.category && state.activeSub === subObj.sub) sbtn.classList.add("active");
+        sbtn.innerHTML = `<span>${subObj.sub}</span><span class="count">${total}</span>`;
+        sbtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          state.activeCategory = catObj.category;
+          state.activeSub = subObj.sub;
+          state.search = "";
+          $("searchInput").value = "";
+          renderMenu();
+          renderGrid();
+        });
+        subs.appendChild(sbtn);
+      });
+
+      cat.appendChild(btn);
+      cat.appendChild(subs);
+      menu.appendChild(cat);
+    });
+  }
+
+  // ========= 5) GRID RENDER =========
+  function getVisibleItems(){
+    let items = flattenAllItems();
+
+    if(state.activeCategory && state.activeSub){
+      items = items.filter(x => x.category === state.activeCategory && x.sub === state.activeSub);
+    } else if(state.activeCategory){
+      items = items.filter(x => x.category === state.activeCategory);
+    }
+
+    const q = state.search.trim().toLowerCase();
+    if(q){
+      items = flattenAllItems().filter(x =>
+        (x.name + " " + x.category + " " + x.sub).toLowerCase().includes(q)
+      );
+    }
+
+    return items;
+  }
+
+  function renderGrid(){
+    setTitle();
+    const grid = $("grid");
+    const items = getVisibleItems();
+
+    grid.innerHTML = "";
+
+    if(items.length === 0){
+      grid.innerHTML = `
+        <div style="grid-column:1/-1; padding:20px; color:var(--muted)">
+          Sonuç bulunamadı. Yazımı kontrol edin veya başka anahtar kelime deneyin.
+        </div>
+      `;
+      return;
+    }
+
+    items.forEach((it) => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const thumb = document.createElement("div");
+      thumb.className = "thumb";
+
+      if(it.img){
+        const img = document.createElement("img");
+        img.src = it.img;
+        img.alt = it.name;
+        img.loading = "lazy";
+        img.onerror = () => {
+          thumb.innerHTML = "Görsel yüklenemedi";
+        };
+        thumb.appendChild(img);
+      } else {
+        thumb.textContent = "Görsel yok";
+      }
+
+      const body = document.createElement("div");
+      body.className = "body";
+
+      const name = document.createElement("div");
+      name.className = "name";
+      name.textContent = it.name;
+
+      const meta = document.createElement("div");
+      meta.className = "meta";
+      meta.textContent = `${it.category} • ${it.sub}`;
+
+      const actions = document.createElement("div");
+      actions.className = "actions";
+
+      const go = document.createElement("button");
+      go.className = "go";
+      go.type = "button";
+      go.textContent = "GÖZAT";
+      go.addEventListener("click", () => openModal(it));
+
+      actions.appendChild(go);
+
+      body.appendChild(name);
+      body.appendChild(meta);
+      body.appendChild(actions);
+
+      card.appendChild(thumb);
+      card.appendChild(body);
+
+      grid.appendChild(card);
+    });
+  }
+
+  // ========= 6) MODAL =========
+  function openModal(it){
+    $("modalTitle").textContent = it.name;
+
+    const mt = $("modalThumb");
+    if(it.img){
+      mt.innerHTML = "";
+      const img = document.createElement("img");
+      img.src = it.img;
+      img.alt = it.name;
+      img.onerror = () => { mt.innerHTML = "Görsel yüklenemedi"; };
+      mt.appendChild(img);
+    } else {
+      mt.textContent = "Görsel yok";
+    }
+
+    $("modalKv").innerHTML = `
+      <div><b>Kategori</b>${it.category}</div>
+      <div><b>Alt Kategori</b>${it.sub}</div>
+      <div><b>Ürün</b>${it.name}</div>
+      <div><b>Not</b>İstersen buraya ölçü, stok, fiyat, açıklama alanları eklenebilir.</div>
+    `;
+
+    $("modalBackdrop").classList.add("show");
+    $("modalBackdrop").setAttribute("aria-hidden", "false");
+  }
+
+  function closeModal(){
+    $("modalBackdrop").classList.remove("show");
+    $("modalBackdrop").setAttribute("aria-hidden", "true");
+  }
+
+  // ========= 7) EVENTS =========
+  $("searchInput").addEventListener("input", (e) => {
+    state.search = e.target.value;
+    state.activeCategory = null;
+    state.activeSub = null;
+    renderMenu();
+    renderGrid();
+  });
+
+  $("showAllBtn").addEventListener("click", () => {
+    state.activeCategory = null;
+    state.activeSub = null;
+    state.search = "";
+    $("searchInput").value = "";
+    renderMenu();
+    renderGrid();
+  });
+
+  $("modalClose").addEventListener("click", closeModal);
+  $("modalBackdrop").addEventListener("click", (e) => {
+    if(e.target.id === "modalBackdrop") closeModal();
+  });
+  window.addEventListener("keydown", (e) => {
+    if(e.key === "Escape") closeModal();
+  });
+
+  // ========= 8) INIT =========
+  renderMenu();
+  renderGrid();
+</script>
+</body>
+</html>

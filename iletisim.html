@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yaşar Kauçuk | İletişim</title>
+
+<style>
+:root{
+  --brand:#0f2ea6;
+  --brand2:#1f4ed8;
+  --text:#111827;
+  --muted:#6b7280;
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --border:#e5e7eb;
+  --shadow:0 14px 34px rgba(0,0,0,.08);
+  --radius:18px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* Header */
+.header{
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+  color:#fff;
+  padding:36px 18px;
+}
+.header-inner{
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.header h1{
+  margin:0;
+  font-size:30px;
+  letter-spacing:.2px;
+}
+.header p{
+  margin:8px 0 0 0;
+  opacity:.9;
+  color:#e0e7ff;
+}
+
+/* Nav */
+.nav{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.nav a{
+  color:#fff;
+  text-decoration:none;
+  padding:10px 14px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  font-weight:800;
+  font-size:13px;
+  background: rgba(255,255,255,.10);
+}
+.nav a:hover{background: rgba(255,255,255,.18)}
+
+/* Layout */
+.container{
+  max-width:1100px;
+  margin:22px auto 70px auto;
+  padding:0 18px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:18px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:20px;
+}
+
+.card h2{
+  margin:0 0 10px 0;
+  font-size:18px;
+}
+.muted{color:var(--muted); font-size:13px; line-height:1.55}
+
+/* Contact list */
+.list{
+  margin-top:14px;
+  display:grid;
+  gap:10px;
+}
+.item{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:12px;
+  background:#fff;
+}
+.icon{
+  width:40px; height:40px;
+  border-radius:14px;
+  background: linear-gradient(135deg, rgba(15,46,166,.12), rgba(31,78,216,.10));
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px;
+  flex:0 0 auto;
+}
+.item b{display:block; font-size:13px; margin-bottom:2px}
+.item a{
+  color:var(--brand2);
+  text-decoration:none;
+  font-weight:800;
+  font-size:14px;
+  word-break:break-word;
+}
+.item a:hover{text-decoration:underline}
+
+/* Buttons */
+.actions{
+  margin-top:14px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:12px 14px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  text-decoration:none;
+  font-weight:900;
+  font-size:13px;
+  background:#fff;
+  color:#111827;
+}
+.btn:hover{border-color: rgba(31,78,216,.35)}
+.btn.primary{
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+  color:#fff;
+  border:0;
+}
+.btn.primary:hover{filter:brightness(1.05)}
+
+/* Map */
+.map{
+  width:100%;
+  height:360px;
+  border:0;
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.footer{
+  text-align:center;
+  padding:18px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+@media(max-width:900px){
+  .container{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div>
+      <h1>Yaşar Kauçuk • İletişim</h1>
+      <p>Telefon, e-posta, WhatsApp ve konum bilgileri</p>
+    </div>
+
+    <nav class="nav">
+      <!-- Giriş sayfanın adı neyse onu yaz (ör: giris.html) -->
+      <a href="login.html">Giriş</a>
+      <a href="index.html">Katalog</a>
+      <a href="iletisim.html">İletişim</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Sol: İletişim bilgileri -->
+  <section class="card">
+    <h2>İletişim Bilgileri</h2>
+    <p class="muted">Aşağıdaki bağlantılara tıklayarak direkt arayabilir veya mesaj gönderebilirsiniz.</p>
+
+    <div class="list">
+
+      <div class="item">
+        <div class="icon">📞</div>
+        <div>
+          <b>Telefon</b>
+          <!-- NUMARAYI DEĞİŞTİR -->
+          <a href="tel:+905306487563">+90 530 648 75 63</a>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="icon">✉️</div>
+        <div>
+          <b>E-posta</b>
+          <!-- MAİLİ DEĞİŞTİR -->
+          <a href="mailto:yasarkaucuk@outlook.com">yasarkaucuk@outlook.com</a>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="icon">💬</div>
+        <div>
+          <b>WhatsApp</b>
+          <!-- WhatsApp numarası: 90 ile başlasın, boşluk olmasın -->
+          <a href="https://wa.me/905306487563" target="_blank" rel="noopener">WhatsApp'tan Yaz</a>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="icon">📍</div>
+        <div>
+          <b>Adres</b>
+          <!-- ADRESİ DEĞİŞTİR -->
+          <div class="muted">Kocaeli izmit / Türkiye</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="actions">
+      <!-- Yol tarifi: destination kısmını adresinle değiştir -->
+      <a class="btn primary"
+         href="https://www.google.com/maps/dir/?api=1&destination=İstanbul%20Türkiye"
+         target="_blank" rel="noopener">🗺️ Yol Tarifi Al</a>
+
+      <a class="btn" href="index.html">📦 Kataloğa Git</a>
+    </div>
+  </section>
+
+  <!-- Sağ: Google Maps -->
+  <section class="card">
+    <h2>Konum (Google Maps)</h2>
+    <p class="muted">
+      Aşağıdaki harita şu an İstanbul’u gösteriyor. Kendi adresin için “src” linkini değiştirebilirsin.
+    </p>
+
+    <!-- ✅ Basit map (İstanbul örnek) -->
+    <iframe
+      class="map"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.6820953394827!2d29.947659375752036!3d40.74702023547141!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb4fb625c7bcc3%3A0x8f158238c754d8da!2zWWHFn2FyIEthdcOndWsgU2FuLiBPdG8gUGFyw6dhICYgSG9ydHVtIHwgxLB6bWl0!5e0!3m2!1str!2sus!4v1769807350247!5m2!1str!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"
+      
+    </iframe>
+
+    <!--
+      ✅ En doğru yöntem:
+      Google Maps → Paylaş → Harita Yerleştir → iframe kodunu buraya yapıştır
+      (src="https://www.google.com/maps/embed?pb=....")
+    -->
+  </section>
+
+</main>
+
+<div class="footer">
+  © 2026 Yaşar Kauçuk • Tüm Hakları Saklıdır
+</div>
+
+</body>
+</html>
