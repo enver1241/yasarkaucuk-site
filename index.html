@@ -5,32 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Yaşar Kauçuk | Hortum, Kelepçe ve Endüstriyel Kauçuk | İzmit</title>
 
+  <!-- Canonical + SEO -->
   <link rel="canonical" href="https://www.yasarkaucuk.com/" />
   <meta name="description" content="Yaşar Kauçuk: hortum, kelepçe, kauçuk ve bağlantı ekipmanlarında güvenilir tedarikçi. İzmit ve çevresine endüstriyel çözümler." />
   <meta name="robots" content="index, follow" />
   <meta name="keywords" content="hortum, kelepçe, kauçuk, fitting, sanayi hortumu, izmit hortum, izmit kelepçe, Yaşar Kauçuk" />
 
+  <!-- Favicon / App Icons (Google küçük ikon için) -->
+  <link rel="icon" href="https://www.yasarkaucuk.com/favicon.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="https://www.yasarkaucuk.com/apple-touch-icon.png" sizes="180x180" />
+
+  <!-- Open Graph (Google/WhatsApp/FB preview için) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Yaşar Kauçuk | Ürün Kataloğu" />
   <meta property="og:description" content="Hortum, kelepçe ve endüstriyel kauçuk ürünlerinde güvenilir tedarikçi." />
   <meta property="og:url" content="https://www.yasarkaucuk.com/" />
-  <meta property="og:image" content="https://www.yasarkaucuk.com/favicon.png" />
 
-  <meta name="twitter:card" content="summary" />
+  <!-- ⚠️ ÖNEMLİ: favicon küçük olduğu için OG görsel olarak kullanma.
+       Repo'na mutlaka 1200x630 bir görsel koy: /og-1200x630.jpg
+       (Dosya adını değiştireceksen burayı da değiştir) -->
+  <meta property="og:image" content="https://www.yasarkaucuk.com/og-1200x630.jpg" />
+  <meta property="og:image:secure_url" content="https://www.yasarkaucuk.com/og-1200x630.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Yaşar Kauçuk - Hortum, Kelepçe, Kauçuk" />
+
+  <!-- Twitter (büyük görsel) -->
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Yaşar Kauçuk | Ürün Kataloğu" />
   <meta name="twitter:description" content="Hortum, kelepçe ve endüstriyel kauçuk ürünlerinde güvenilir tedarikçi." />
-  <meta name="twitter:image" content="https://www.yasarkaucuk.com/favicon.png" />
+  <meta name="twitter:image" content="https://www.yasarkaucuk.com/og-1200x630.jpg" />
 
+  <!-- Structured Data (Logo + Image ayrı) -->
+  <!-- ⚠️ logo için kare bir logo önerilir: /logo-512.png (512x512 gibi).
+       Şimdilik favicon ile bıraktım ama en ideali ayrı logo dosyasıdır. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Yaşar Kauçuk",
-    "url": "https://www.yasarkaucuk.com",
-    "logo": "https://www.yasarkaucuk.com/favicon.png",
+    "url": "https://www.yasarkaucuk.com/",
+    "image": "https://www.yasarkaucuk.com/og-1200x630.jpg",
+    "logo": "https://www.yasarkaucuk.com/logo-512.png",
     "email": "yasarkaucuk@outlook.com",
     "telephone": "+905306487563",
-    "areaServed": "Türkiye"
+    "areaServed": "Türkiye",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sanayi Mahallesi İzmit Sanayi Sitesi 5. Cadde 404 Blok No: 7",
+      "addressLocality": "İzmit",
+      "addressRegion": "Kocaeli",
+      "addressCountry": "TR"
+    }
   }
   </script>
 
@@ -900,7 +926,7 @@
     </div>
   </footer>
 
-  <!-- VIDEO MODAL (EKLENDİ) -->
+  <!-- VIDEO MODAL -->
   <div id="videoModal" class="videoModal" aria-hidden="true">
     <div class="videoModal-backdrop" onclick="closeLocalVideo()"></div>
 
