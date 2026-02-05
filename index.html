@@ -3,21 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Yaşar Kauçuk | Ürün Kataloğu</title>
+  <title>Yaşar Kauçuk | Hortum, Kelepçe ve Endüstriyel Kauçuk | İzmit</title>
 
   <link rel="canonical" href="https://www.yasarkaucuk.com/" />
-  <meta name="description" content="Yaşar Kauçuk: hortum, kelepçe, kauçuk ve bağlantı ekipmanlarında güvenilir tedarikçi. Endüstriyel çözümler." />
+  <meta name="description" content="Yaşar Kauçuk: hortum, kelepçe, kauçuk ve bağlantı ekipmanlarında güvenilir tedarikçi. İzmit ve çevresine endüstriyel çözümler." />
   <meta name="robots" content="index, follow" />
-  <meta name="keywords" content="hortum, kelepçe, kauçuk, fitting, sanayi hortumu, Yaşar Kauçuk" />
+  <meta name="keywords" content="hortum, kelepçe, kauçuk, fitting, sanayi hortumu, izmit hortum, izmit kelepçe, Yaşar Kauçuk" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Yaşar Kauçuk | Ürün Kataloğu" />
   <meta property="og:description" content="Hortum, kelepçe ve endüstriyel kauçuk ürünlerinde güvenilir tedarikçi." />
   <meta property="og:url" content="https://www.yasarkaucuk.com/" />
   <meta property="og:image" content="https://www.yasarkaucuk.com/favicon.png" />
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Yaşar Kauçuk | Ürün Kataloğu" />
   <meta name="twitter:description" content="Hortum, kelepçe ve endüstriyel kauçuk ürünlerinde güvenilir tedarikçi." />
@@ -26,12 +24,13 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "LocalBusiness",
     "name": "Yaşar Kauçuk",
     "url": "https://www.yasarkaucuk.com",
     "logo": "https://www.yasarkaucuk.com/favicon.png",
     "email": "yasarkaucuk@outlook.com",
-    "telephone": "+905306487563"
+    "telephone": "+905306487563",
+    "areaServed": "Türkiye"
   }
   </script>
 
@@ -39,10 +38,15 @@
     :root{
       --brand:#0f2ea6;
       --brand2:#1f4ed8;
-      --text:#ffffff;
-      --muted:rgba(255,255,255,.80);
-      --card:rgba(255,255,255,.12);
-      --shadow:0 16px 40px rgba(0,0,0,.28);
+      --accent:#e11d2e;
+      --bg:#0b1226;
+      --text:#0b1020;
+      --muted:#5b6477;
+      --white:#ffffff;
+      --shadow: 0 18px 45px rgba(10, 16, 32, .18);
+      --shadow2: 0 26px 80px rgba(10, 16, 32, .22);
+      --radius:18px;
+      --container: 1200px;
     }
 
     *{ box-sizing:border-box; }
@@ -50,220 +54,942 @@
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      overflow-x:hidden;
-      -webkit-text-size-adjust: 100%; /* iOS yazı büyütmesini kapatır */
-    }
-
-    /* HERO: iOS için daha stabil yükseklik + safe area */
-    .hero{
-      min-height: 100svh; /* iOS Safari daha stabil */
-      padding:
-        calc(20px + env(safe-area-inset-top))
-        calc(20px + env(safe-area-inset-right))
-        calc(20px + env(safe-area-inset-bottom))
-        calc(20px + env(safe-area-inset-left));
       color:var(--text);
-
-      background:
-        linear-gradient(120deg, rgba(15,46,166,.85), rgba(0,0,0,.65)),
-        url("hero-bg.jpg") center/cover no-repeat;
-
-      display:flex;
+      background: #f6f7fb;
+      overflow-x:hidden;
+      -webkit-text-size-adjust:100%;
     }
 
-    /* Sayfa düzeni: footer çakışmasın diye flex column */
-    .page{
-      width:100%;
-      max-width:1200px;
-      margin:auto;
-      display:flex;
-      flex-direction:column;
-      gap:22px;
-    }
+    a{ color:inherit; }
+    .container{ width:100%; max-width:var(--container); margin:0 auto; padding:0 18px; }
 
-    .hero-inner{
-      display:grid;
-      grid-template-columns: 1.15fr 1fr;
-      gap: clamp(16px, 4vw, 56px);
+    .topbar{
+      background:#ffffff;
+      border-bottom:1px solid rgba(10,16,32,.08);
+      font-size:13px;
+      color:#4b5565;
+    }
+    .topbar .inner{
+      display:flex;
       align-items:center;
-      width:100%;
+      justify-content:space-between;
+      padding:8px 0;
+      gap:12px;
     }
+    .topbar .left, .topbar .right{ display:flex; gap:14px; align-items:center; }
+    .mini-link{ text-decoration:none; opacity:.9; }
+    .mini-link:hover{ opacity:1; text-decoration:underline; }
 
-    .hero-left h1{
-      font-size: clamp(30px, 5vw, 54px);
-      line-height:1.05;
-      margin:0 0 12px 0;
-      font-weight:850;
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:#ffffff;
+      border-bottom:1px solid rgba(10,16,32,.08);
+      backdrop-filter:saturate(140%) blur(8px);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      font-weight:900;
       letter-spacing:.2px;
     }
-    .hero-left h1 span{ color:#c7d2fe; }
-
-    .hero-left p{
-      margin:0;
-      font-size: clamp(14px, 2.1vw, 18px);
-      line-height:1.65;
-      max-width: 56ch;
-      color:var(--muted);
-      text-wrap: balance;
+    .brand img{
+      width:38px; height:38px;
+      border-radius:10px;
+      box-shadow: 0 10px 25px rgba(15,46,166,.18);
     }
-
-    .buttons{
-      margin-top:18px;
+    .navlinks{
       display:flex;
-      gap:12px;
-      flex-wrap:wrap;
+      gap:18px;
+      align-items:center;
     }
+    .navlinks a{
+      text-decoration:none;
+      font-weight:700;
+      color:#0b1020;
+      opacity:.85;
+      font-size:14px;
+    }
+    .navlinks a:hover{ opacity:1; }
+
+    .actions{ display:flex; gap:10px; align-items:center; }
+
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:14px 20px;
+      padding:11px 14px;
       border-radius:999px;
-      font-size:15px;
-      font-weight:850;
       text-decoration:none;
-      transition:.2s;
-      user-select:none;
+      font-weight:900;
+      font-size:14px;
+      border:1px solid rgba(10,16,32,.12);
+      background:#fff;
+      transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
       white-space:nowrap;
     }
+    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow); }
+
     .btn-primary{
-      background:#fff;
-      color:#0f2ea6;
-      box-shadow: var(--shadow);
-    }
-    .btn-primary:hover{ transform:translateY(-2px); }
-    .btn-outline{
-      border:2px solid #fff;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
       color:#fff;
-      background:transparent;
+      border-color: transparent;
+      box-shadow: 0 18px 45px rgba(15,46,166,.22);
     }
-    .btn-outline:hover{
-      background:#fff;
-      color:#0f2ea6;
+    .btn-primary:hover{ box-shadow: 0 26px 80px rgba(15,46,166,.28); }
+
+    .btn-accent{
+      background: var(--accent);
+      color:#fff;
+      border-color: transparent;
+      box-shadow: 0 18px 45px rgba(225,29,46,.18);
     }
 
-    .hero-right{
+    .hamburger{
+      display:none;
+      width:42px; height:42px;
+      border-radius:12px;
+      border:1px solid rgba(10,16,32,.12);
+      background:#fff;
+      align-items:center; justify-content:center;
+    }
+
+    .hero{
+      position:relative;
+      background:#0b1226;
+      color:#fff;
+      overflow:hidden;
+    }
+
+    .slider{
+      position:relative;
+      height: min(72vh, 640px);
+      min-height: 520px;
+    }
+
+    .slides{ position:absolute; inset:0; }
+
+    .slide{
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transform: scale(1.02);
+      transition: opacity .7s ease, transform 1.2s ease;
+      background:
+        radial-gradient(1200px 600px at 20% 30%, rgba(255,255,255,.12), transparent 55%),
+        linear-gradient(120deg, rgba(8,12,20,.76), rgba(8,12,20,.55)),
+        url("hero-bg.jpg") center/cover no-repeat;
+    }
+
+    .slide[data-bg="2"]{
+      background:
+        radial-gradient(1000px 500px at 70% 30%, rgba(56,189,248,.18), transparent 55%),
+        linear-gradient(120deg, rgba(8,12,20,.78), rgba(8,12,20,.58)),
+        url("fitil.png") center/cover no-repeat,
+        linear-gradient(135deg, rgba(15,46,166,.55), rgba(0,0,0,.75));
+    }
+    .slide[data-bg="3"]{
+      background:
+        radial-gradient(1000px 500px at 30% 70%, rgba(225,29,46,.18), transparent 55%),
+        linear-gradient(120deg, rgba(8,12,20,.80), rgba(8,12,20,.60)),
+        url("yaylikelepce.jpg") center/cover no-repeat,
+        linear-gradient(135deg, rgba(15,46,166,.55), rgba(0,0,0,.75));
+    }
+
+    .slide.active{ opacity:1; transform: scale(1); }
+
+    .shapes{ position:absolute; inset:0; pointer-events:none; z-index:2; }
+    .shape-red{
+      position:absolute;
+      right:-90px;
+      top:-70px;
+      width:360px; height:360px;
+      background: var(--accent);
+      transform: rotate(35deg);
+      opacity:.85;
+      filter: drop-shadow(0 30px 80px rgba(225,29,46,.25));
+      animation: shapeFloat 7s ease-in-out infinite;
+    }
+    .shape-blue{
+      position:absolute;
+      right:-120px;
+      bottom:-140px;
+      width:420px; height:420px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      transform: rotate(35deg);
+      opacity:.72;
+      animation: shapeFloat 8.5s ease-in-out infinite reverse;
+    }
+    @keyframes shapeFloat{
+      0%,100%{ transform: rotate(35deg) translate3d(0,0,0); }
+      50%{ transform: rotate(35deg) translate3d(-10px, 12px, 0); }
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:3;
+      height:100%;
+      display:flex;
+      align-items:center;
+      padding: 48px 0;
+    }
+    .hero-grid{
       display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items:center;
       width:100%;
     }
-    .info{
-      background:var(--card);
+
+    .hero h1{
+      margin:14px 0 12px 0;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height:1.02;
+      font-weight:1000;
+      letter-spacing:.2px;
+      text-transform:uppercase;
+      text-shadow: 0 18px 60px rgba(0,0,0,.45);
+    }
+
+    .hero p{
+      margin:0 0 18px 0;
+      color: rgba(255,255,255,.84);
+      font-size: clamp(14px, 1.6vw, 18px);
+      line-height:1.65;
+      max-width: 60ch;
+    }
+
+    .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
+
+    .hero-badges{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      justify-self:end;
+      width: min(420px, 100%);
+    }
+
+    .badge{
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: var(--radius);
+      padding: 14px 14px;
       backdrop-filter: blur(10px);
-      border-radius:18px;
-      padding:16px;
-      min-width:0;
+      box-shadow: 0 18px 55px rgba(0,0,0,.18);
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      transition: transform .2s ease, background .2s ease;
     }
-    .info h3{
-      margin:0 0 6px 0;
-      font-size:15px;
-      line-height:1.25;
+    .badge:hover{ transform: translateY(-4px); background: rgba(255,255,255,.12); }
+
+    .controls{ position:absolute; inset:auto 0 18px 0; z-index:4; }
+    .controls .inner{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .dots{ display:flex; gap:8px; align-items:center; }
+    .dotBtn{
+      width:10px; height:10px;
+      border-radius:999px;
+      border:0;
+      background: rgba(255,255,255,.35);
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease;
     }
-    .info p{
+    .dotBtn.active{ background:#fff; transform: scale(1.25); }
+    .arrows{ display:flex; gap:10px; }
+    .arrow{
+      width:42px; height:42px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.10);
+      color:#fff;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .arrow:hover{ transform: translateY(-1px); background: rgba(255,255,255,.14); }
+
+    .section{ padding: 64px 0; background:#fff; }
+    .section-title{ text-align:center; margin-bottom: 22px; }
+    .section-title h2{
       margin:0;
+      font-size: clamp(26px, 3.2vw, 44px);
+      letter-spacing:.02em;
+      font-weight:1000;
+      text-transform:uppercase;
+      color:#1b2140;
+    }
+    .section-title p{
+      margin:12px auto 0 auto;
+      color:#5b6477;
+      max-width: 90ch;
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 26px;
+      align-items:start;
+      margin-top: 28px;
+    }
+
+    .card{
+      background:#fff;
+      border:1px solid rgba(10,16,32,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .aboutBox{ padding: 22px; }
+    .aboutBox p{ margin:0; color:#4f5a6f; line-height:1.78; font-size:15px; }
+    .aboutBox b{ color:#1b2140; }
+
+    .videoBox{ overflow:hidden; min-height: 260px; }
+    .videoFake{
+      width:100%;
+      height:100%;
+      min-height: 260px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        linear-gradient(135deg, rgba(15,46,166,.20), rgba(0,0,0,.08)),
+        url("hero-bg.jpg") center/cover no-repeat;
+      position:relative;
+      cursor:pointer;
+    }
+    .play{
+      width:72px; height:72px;
+      border-radius:999px;
+      background: rgba(225,29,46,.95);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:26px;
+      box-shadow: 0 18px 60px rgba(225,29,46,.30);
+      border: 6px solid rgba(255,255,255,.75);
+      transition: transform .15s ease;
+      user-select:none;
+    }
+    .play:hover{ transform: scale(1.04); }
+
+    .iconGrid{ padding: 26px 0 0 0; background:#f6f7fb; }
+    .iconCards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      padding-bottom: 64px;
+    }
+    .ic{
+      background:#fff;
+      border:1px solid rgba(10,16,32,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display:flex;
+      gap:14px;
+      align-items:center;
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .ic:hover{ transform: translateY(-3px); box-shadow: var(--shadow2); }
+    .ic .circle{
+      width:64px; height:64px; border-radius:999px;
+      background: rgba(225,29,46,.10);
+      border: 1px solid rgba(225,29,46,.22);
+      display:flex; align-items:center; justify-content:center;
+      font-size:28px;
+      color: var(--accent);
+      flex: 0 0 auto;
+    }
+    .ic h4{
+      margin:0;
+      font-weight:1000;
+      font-size:14px;
+      letter-spacing:.02em;
+      color:#1b2140;
+      text-transform:uppercase;
+    }
+    .ic a{
+      display:inline-flex;
+      margin-top:6px;
+      font-weight:900;
+      color: var(--brand);
+      text-decoration:none;
       font-size:13px;
-      line-height:1.55;
-      color:var(--muted);
-      overflow-wrap:anywhere; /* mail/telefon taşmasın */
+    }
+    .ic a:hover{ text-decoration:underline; }
+
+    .products{ padding: 64px 0; background:#fff; }
+    .gridTop{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom: 22px;
+    }
+    .gridTop h2{
+      margin:0;
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight:1000;
+      text-transform:uppercase;
+      color:#1b2140;
+    }
+    .gridTop p{
+      margin:6px 0 0 0;
+      color:#5b6477;
+      line-height:1.6;
+      max-width:80ch;
+      font-size:14px;
     }
 
-    /* Footer artık absolute değil: içerikten sonra gelir */
-    .footer-bar{
-      margin-top:auto;
-      text-align:center;
-      font-size:12px;
-      color:rgba(255,255,255,.72);
-      padding-top:8px;
+    .productGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .pCard{
+      background:#fff;
+      border:1px solid rgba(10,16,32,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .pCard:hover{ transform: translateY(-3px); box-shadow: var(--shadow2); }
+    .pImg{
+      height: 230px;
+      background:
+        linear-gradient(135deg, rgba(15,46,166,.10), rgba(0,0,0,.02)),
+        url("hero-bg.jpg") center/cover no-repeat;
+    }
+    .pBody{ padding: 16px; }
+    .pMeta{ font-size:12px; color:#6b7280; margin-bottom:6px; font-weight:800; }
+    .pTitle{ margin:0; font-weight:1000; color:#0b1020; font-size:15px; line-height:1.35; }
+    .pActions{ margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; }
+    .btn-sm{ padding:10px 12px; font-size:13px; }
+
+    footer{ background:#0b1226; color:#fff; padding: 40px 0; }
+    .foot{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:20px;
+      align-items:start;
+    }
+    .foot p{
+      margin:10px 0 0 0;
+      color: rgba(255,255,255,.75);
+      line-height:1.7;
+      font-size:14px;
+      max-width: 70ch;
+    }
+    .footBox{
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius);
+      padding: 14px 14px;
+    }
+    .footBox b{ display:block; margin-bottom:6px; }
+    .copy{ margin-top:18px; color: rgba(255,255,255,.65); font-size:12px; }
+
+    .reveal{
+      opacity:0;
+      transform: translateY(12px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.show{ opacity:1; transform: translateY(0); }
+
+    /* ===== VIDEO MODAL ===== */
+    .videoModal{
+      position:fixed;
+      inset:0;
+      display:none;
+      z-index:9999;
+    }
+    .videoModal.show{ display:block; }
+    .videoModal-backdrop{
+      position:absolute;
+      inset:0;
+      background: rgba(0,0,0,.65);
+    }
+    .videoModal-dialog{
+      position:relative;
+      width:min(920px, 92vw);
+      margin: 8vh auto;
+      background:#000;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow: 0 26px 80px rgba(0,0,0,.45);
+    }
+    .videoModal-close{
+      position:absolute;
+      top:10px;
+      right:10px;
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      border:none;
+      background: rgba(255,255,255,.25);
+      color:#fff;
+      font-size:20px;
+      cursor:pointer;
+      z-index:2;
+    }
+    .videoModal-frame{ padding:10px; }
+    .videoModal-frame video{
+      width:100%;
+      height:auto;
+      max-height:70vh;
+      border-radius:14px;
+      background:#000;
+      display:block;
     }
 
-    /* Tablet */
-    @media (max-width: 900px){
-      .hero-inner{
-        grid-template-columns: 1fr;
-        align-items:start;
-      }
-      .hero-right{
-        grid-template-columns: 1fr 1fr;
-      }
-      .btn{ flex:1; min-width: 220px; }
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .hero-badges{ justify-self:start; }
+      .two-col{ grid-template-columns: 1fr; }
+      .iconCards{ grid-template-columns: 1fr 1fr; }
+      .productGrid{ grid-template-columns: 1fr 1fr; }
+      .navlinks{ display:none; }
+      .hamburger{ display:flex; }
     }
 
-    /* Mobil */
-    @media (max-width: 600px){
-      .hero{
-        padding:
-          calc(18px + env(safe-area-inset-top))
-          calc(16px + env(safe-area-inset-right))
-          calc(18px + env(safe-area-inset-bottom))
-          calc(16px + env(safe-area-inset-left));
-      }
+    @media (max-width: 620px){
+      .slider{ min-height: 560px; }
+      .iconCards{ grid-template-columns: 1fr; }
+      .productGrid{ grid-template-columns: 1fr; }
+      .gridTop{ flex-direction:column; align-items:flex-start; }
+      .topbar .inner{ flex-direction:column; align-items:flex-start; gap:6px; }
+    }
 
-      .buttons{ gap:10px; }
-      .btn{
-        width:100%;
-        min-width:0;
-        white-space:normal; /* küçük ekranda alt satıra inebilir */
-      }
-
-      .hero-right{
-        grid-template-columns: 1fr;
-      }
-
-      .info{
-        padding:14px;
-      }
+    @media (prefers-reduced-motion: reduce){
+      .slide{ transition:none; }
+      .shape-red, .shape-blue{ animation:none; }
+      .reveal{ transition:none; }
     }
   </style>
 </head>
 
 <body>
-  <section class="hero">
-    <div class="page">
 
-      <div class="hero-inner">
-        <div class="hero-left">
-          <h1>Yaşar <span>Kauçuk</span></h1>
-
-          <p>
-            Kauçuk, hortum, kelepçe ve bağlantı ekipmanlarında
-            <strong>güvenilir tedarikçi</strong>.
-            Tüm ürünlerimizi modern katalog sistemimizden
-            hızlıca inceleyin.
-          </p>
-
-          <div class="buttons">
-            <a href="login.html" class="btn btn-primary">Ürün Kataloğuna Git</a>
-            <a href="iletisim.html" class="btn btn-outline">İletişim</a>
-          </div>
+  <div class="topbar">
+    <div class="container">
+      <div class="inner">
+        <div class="left">
+          <a class="mini-link" href="#iletisim">İletişim</a>
+          <span>•</span>
+          <a class="mini-link" href="tel:+905306487563">+90 530 648 75 63</a>
+          <span>•</span>
+          <a class="mini-link" href="mailto:yasarkaucuk@outlook.com">yasarkaucuk@outlook.com</a>
         </div>
+        <div class="right">
+          <span>YAŞAR KAUÇUK SANAYİ MAHALLESİ İZMİT SANAYİ SİTESİ 5. CADDE 404 BLOK NO: 7 İZMİT/KOCAELİ/TÜRKİYE</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <div class="hero-right">
-          <div class="info">
-            <h3>🏭 Geniş Ürün Yelpazesi</h3>
-            <p>Hortumlar, kelepçeler, kauçuk ürünler ve bağlantı elemanları.</p>
-          </div>
-          <div class="info">
-            <h3>⚙️ Endüstriyel Çözümler</h3>
-            <p>Sanayi, otomotiv ve altyapı projeleri için uygun ürünler.</p>
-          </div>
-          <div class="info">
-            <h3>🚚 Hızlı Tedarik</h3>
-            <p>Stoktan hızlı teslimat ve güvenilir sevkiyat.</p>
-          </div>
-          <div class="info" id="iletisim">
-            <h3>📞 İletişim</h3>
-            <p>
-              <a style="color:inherit; text-decoration:none;" href="tel:+905306487563">+90 530 648 75 63</a><br>
-              <a style="color:inherit; text-decoration:none;" href="mailto:yasarkaucuk@outlook.com">yasarkaucuk@outlook.com</a><br>
-              Türkiye
-            </p>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#">
+          <img src="favicon.png" alt="Yaşar Kauçuk Logo" />
+          <span>Yaşar Kauçuk</span>
+        </a>
+
+        <nav class="navlinks" aria-label="Ana Menü">
+          <a href="#kurumsal">Kurumsal</a>
+          <a href="login.html">Kategoriler</a>
+          <a href="login.html">Ürünler</a>
+          <a href="iletisim.html">İletişim</a>
+        </nav>
+
+        <div class="actions">
+          <a class="btn btn-sm" href="iletisim.html">İletişim</a>
+          <a class="btn btn-primary btn-sm" href="login.html">Ürün Kataloğu</a>
+          <button class="hamburger" type="button" aria-label="Menü" onclick="toggleMobileMenu()">☰</button>
+        </div>
+      </div>
+
+      <div id="mMenu" style="display:none; padding:0 0 14px 0;">
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn btn-sm" href="#kurumsal" onclick="toggleMobileMenu()">Kurumsal</a>
+          <a class="btn btn-sm" href="login.html" onclick="toggleMobileMenu()">Kategoriler</a>
+          <a class="btn btn-sm" href="login.html" onclick="toggleMobileMenu()">Ürünler</a>
+          <a class="btn btn-sm" href="#iletisim" onclick="toggleMobileMenu()">İletişim</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="slider">
+      <div class="slides" aria-label="Slider">
+        <div class="slide active" data-bg="1"></div>
+        <div class="slide" data-bg="2"></div>
+        <div class="slide" data-bg="3"></div>
+      </div>
+
+      <div class="shapes" aria-hidden="true">
+        <div class="shape-red"></div>
+        <div class="shape-blue"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="reveal">
+              <h1>
+                Yaşar Kauçuk<br>
+                Sanayi. Oto Parça & Hortum Tedarikçisi
+              </h1>
+              <p class="hero-sub">
+                İzmit merkezli güvenilir tedarik • 1995’ten beri
+              </p>
+
+              <p>
+                Yaşar Kauçuk; hortum, kelepçe, kauçuk ve bağlantı ekipmanlarında
+                sanayiye uygun ürünleri hızlı sevkiyat ve güvenilir tedarik ile sunar.
+              </p>
+
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="login.html">📦 Ürün Kataloğunu İncele</a>
+                <a class="btn btn-accent" href="iletisim.html">☎️ Hızlı Teklif Al</a>
+                <a class="btn btn-primary" href="https://www.instagram.com/yasarkaucuk/">Instagram</a>
+              </div>
+            </div>
+
+            <div class="hero-badges">
+              <div class="badge reveal">
+                <div class="icon">🏭</div>
+                <div>
+                  <h3>Geniş Ürün Yelpazesi</h3>
+                  <p>Hortum, kelepçe, kauçuk ürünler ve bağlantı elemanları.</p>
+                </div>
+              </div>
+              <div class="badge reveal">
+                <div class="icon">⚙️</div>
+                <div>
+                  <h3>Endüstriyel Çözümler</h3>
+                  <p>Sanayi, otomotiv ve altyapı projeleri için uygun ürünler.</p>
+                </div>
+              </div>
+              <div class="badge reveal" id="iletisim">
+                <div class="icon">📞</div>
+                <div>
+                  <h3>İletişim</h3>
+                  <p>
+                    <a href="tel:+905306487563">+90 530 648 75 63</a><br>
+                    <a href="mailto:yasarkaucuk@outlook.com">yasarkaucuk@outlook.com</a><br>
+                    Türkiye
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
 
-      <div class="footer-bar">© 2026 Yaşar Kauçuk • Tüm Hakları Saklıdır</div>
+      <div class="controls">
+        <div class="container">
+          <div class="inner">
+            <div class="dots" id="dots" aria-label="Slider Noktaları">
+              <button class="dotBtn active" aria-label="1" onclick="goSlide(0)"></button>
+              <button class="dotBtn" aria-label="2" onclick="goSlide(1)"></button>
+              <button class="dotBtn" aria-label="3" onclick="goSlide(2)"></button>
+            </div>
+            <div class="arrows" aria-label="Slider Okları">
+              <button class="arrow" type="button" aria-label="Önceki" onclick="prevSlide()">‹</button>
+              <button class="arrow" type="button" aria-label="Sonraki" onclick="nextSlide()">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
+
+  <section class="section" id="kurumsal">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Endüstriyel Tedarik</h2>
+        <p>
+          Yaşar Kauçuk; kaliteli ürün, hızlı sevkiyat ve doğru yönlendirme ile sanayi ihtiyaçlarınıza
+          en uygun çözümleri sunar. Ürün gruplarımız: hortumlar, kelepçeler, fitil, kayış, takoz ve bağlantı elemanları.
+        </p>
+      </div>
+
+      <div class="two-col">
+        <div class="card aboutBox reveal">
+          <p>
+            <b>Yaşar Kauçuk</b>, 1995’ten beri sanayi ve otomotiv tarafında
+            <b>güvenilir tedarik</b> anlayışıyla hizmet verir.
+            Stok gücü, hızlı tedarik ve uygun ürün seçimiyle
+            projelerinizde doğru ürüne hızlı ulaşmanızı hedefler.
+            <br><br>
+            Katalog sistemimiz üzerinden ürünleri inceleyebilir, hızlı teklif için bizimle iletişime geçebilirsiniz.
+          </p>
+
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn btn-primary btn-sm" href="login.html">Kataloğa Git</a>
+            <a class="btn btn-sm" href="iletisim.html">İletişim</a>
+          </div>
+        </div>
+
+        <!-- VIDEO KARTI -->
+        <div class="card videoBox reveal">
+          <div class="videoFake" role="button" aria-label="Tanıtım Videosu" onclick="openLocalVideo('yasarkaucuk.mp4')">
+            <div class="play">▶</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="iconGrid" id="kategoriler">
+    <div class="container">
+      <div class="iconCards">
+        <div class="ic reveal">
+          <div class="circle">👥</div>
+          <div>
+            <h4>HAKKIMIZDA</h4>
+            <a href="hakkımızda.html">Detaylar →</a>
+          </div>
+        </div>
+
+        <div class="ic reveal">
+          <div class="circle">🤝</div>
+          <div>
+            <h4>MİSYON & VİZYON</h4>
+            <a href="misyonvemizyon.html">Detaylar →</a>
+          </div>
+        </div>
+
+        <div class="ic reveal">
+          <div class="circle">🏭</div>
+          <div>
+            <h4>ÜRÜN GRUPLARI</h4>
+            <a href="login.html">Detaylar →</a>
+          </div>
+        </div>
+
+        <div class="ic reveal">
+          <div class="circle">⚙️</div>
+          <div>
+            <h4>UYGULAMALAR</h4>
+            <a href="login.html">Detaylar →</a>
+          </div>
+        </div>
+
+        <div class="ic reveal">
+          <div class="circle">📦</div>
+          <div>
+            <h4>STOK & TEDARİK</h4>
+            <a href="detaylar.html">Detaylar →</a>
+          </div>
+        </div>
+
+        <div class="ic reveal">
+          <div class="circle">📰</div>
+          <div>
+            <h4>DUYURULAR</h4>
+            <a href="iletisim.html">Detaylar →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products" id="urunler">
+    <div class="container">
+
+      <div class="gridTop reveal">
+        <div>
+          <h2>ÖNE ÇIKAN ÜRÜNLER</h2>
+          <p>Buraya katalogdan en çok aranan ürünleri koyacağız. Şimdilik örnek kartlar var; görsel ve isimleri senin ürünlerinle değiştiririz.</p>
+        </div>
+        <a class="btn btn-primary" href="login.html">Tüm Ürünler</a>
+      </div>
+
+      <div class="productGrid">
+        <article class="pCard reveal">
+          <div class="pImg" style="background-image:url('basınc1.jpg');"></div>
+          <div class="pBody">
+            <div class="pMeta">Hortum • Sanayi</div>
+            <h3 class="pTitle">Basınca Dayanıklı Sanayi Hortumu</h3>
+            <div class="pActions">
+              <a class="btn btn-sm" href="login.html">Detay</a>
+              <a class="btn btn-primary btn-sm" href="iletisim.html">Teklif Al</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pCard reveal">
+          <div class="pImg" style="background-image:url('1otomotiv.jpg');"></div>
+          <div class="pBody">
+            <div class="pMeta">Kelepçe • Bağlantı</div>
+            <h3 class="pTitle">Endüstriyel Kelepçe ve Bağlantı Elemanları</h3>
+            <div class="pActions">
+              <a class="btn btn-sm" href="login.html">Detay</a>
+              <a class="btn btn-primary btn-sm" href="iletisim.html">Teklif Al</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pCard reveal">
+          <div class="pImg" style="background-image:url('1damlama-vanasi.jpg');"></div>
+          <div class="pBody">
+            <div class="pMeta">Kauçuk • Fitil</div>
+            <h3 class="pTitle">Kauçuk Fitil, Kayış ve Takoz Çeşitleri</h3>
+            <div class="pActions">
+              <a class="btn btn-sm" href="login.html">Detay</a>
+              <a class="btn btn-primary btn-sm" href="iletisim.html">Teklif Al</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <img src="favicon.png" alt="Yaşar Kauçuk" style="width:40px;height:40px;border-radius:12px;">
+            <b style="font-size:16px;">Yaşar Kauçuk</b>
+          </div>
+          <p>
+            Hortum • Kelepçe • Kauçuk • Fitil • Kayış • Takoz • Bağlantı elemanları.<br>
+            Güvenilir tedarik, hızlı sevkiyat ve doğru ürün seçimi.
+          </p>
+          <div class="copy">© Yaşar Kauçuk • Tüm Hakları Saklıdır</div>
+        </div>
+
+        <div class="footBox">
+          <b>İletişim</b>
+          <div style="color:rgba(255,255,255,.78); font-size:14px; line-height:1.8;">
+            <a href="tel:+905306487563" style="text-decoration:none;">+90 530 648 75 63</a><br>
+            <a href="mailto:yasarkaucuk@outlook.com" style="text-decoration:none;">yasarkaucuk@outlook.com</a><br>
+            YAŞAR KAUÇUK SANAYİ MAHALLESİ İZMİT SANAYİ SİTESİ 5. CADDE 404 BLOK NO: 7 İZMİT/KOCAELİ/TÜRKİYE
+          </div>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="iletisim.html">İletişim</a>
+            <a class="btn btn-primary btn-sm" href="login.html">Katalog</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- VIDEO MODAL (EKLENDİ) -->
+  <div id="videoModal" class="videoModal" aria-hidden="true">
+    <div class="videoModal-backdrop" onclick="closeLocalVideo()"></div>
+
+    <div class="videoModal-dialog" role="dialog" aria-label="Tanıtım Videosu">
+      <button class="videoModal-close" type="button" onclick="closeLocalVideo()" aria-label="Kapat">✕</button>
+
+      <div class="videoModal-frame">
+        <video id="localVideo" controls playsinline preload="metadata">
+          <source id="videoSrcMp4" src="yasarkaucuk.mp4" type="video/mp4">
+          Tarayıcınız video etiketini desteklemiyor.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ======= Mobile Menu =======
+    function toggleMobileMenu(){
+      const el = document.getElementById('mMenu');
+      el.style.display = (el.style.display === 'none' || !el.style.display) ? 'block' : 'none';
+    }
+
+    // ======= Slider =======
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const dots   = Array.from(document.querySelectorAll('.dotBtn'));
+    let idx = 0;
+    let timer = null;
+
+    function render(){
+      slides.forEach((s,i)=> s.classList.toggle('active', i===idx));
+      dots.forEach((d,i)=> d.classList.toggle('active', i===idx));
+    }
+
+    function goSlide(i){
+      idx = (i + slides.length) % slides.length;
+      render();
+      restart();
+    }
+
+    function nextSlide(){ goSlide(idx + 1); }
+    function prevSlide(){ goSlide(idx - 1); }
+
+    function restart(){
+      if(timer) clearInterval(timer);
+      timer = setInterval(nextSlide, 5500);
+    }
+    restart();
+
+    // ======= Reveal on scroll =======
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('show');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+    // ======= VIDEO MODAL =======
+    function openLocalVideo(pathMp4){
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('localVideo');
+      const srcMp4 = document.getElementById('videoSrcMp4');
+
+      srcMp4.src = pathMp4;
+      video.load();
+
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+
+      video.play().catch(()=>{});
+    }
+
+    function closeLocalVideo(){
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('localVideo');
+
+      video.pause();
+      video.currentTime = 0;
+
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape') closeLocalVideo();
+    });
+  </script>
+
 </body>
 </html>
